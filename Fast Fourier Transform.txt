@@ -1,0 +1,19 @@
+def newton_method(func, func_prime, initial_guess, tolerance=1e-5, max_iterations=100):
+    x = initial_guess
+    for _ in range(max_iterations):
+        x_next = x - func(x) / func_prime(x)
+        if abs(x_next - x) < tolerance:
+            return x_next
+        x = x_next
+    raise ValueError("Newton's method did not converge.")
+
+# Example usage
+def example_function(x):
+    return x**2 - 4
+
+def example_function_prime(x):
+    return 2 * x
+
+root = newton_method(example_function, example_function_prime, initial_guess=3)
+print("Root using Newton's method:", root)
+
